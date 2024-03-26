@@ -37,6 +37,9 @@ function(pico_generate_pio_header TARGET PIO)
     set(HEADER_GEN_TARGET "${TARGET}_${HEADER_GEN_TARGET}_pio_h")
 
     add_custom_target(${HEADER_GEN_TARGET} DEPENDS ${HEADER})
+    set(${HEADER_GEN_TARGET}_INPUT_FILE "${PIO}" CACHE INTERNAL "")
+    set(${HEADER_GEN_TARGET}_OUTPUT_FILE "${HEADER_DIR}/${PIO_NAME}.h" CACHE INTERNAL "")
+    set(${HEADER_GEN_TARGET}_CONTAINING_TARGET "${TARGET}" CACHE INTERNAL "")
 
     add_custom_command(OUTPUT ${HEADER}
             DEPENDS ${PIO}
